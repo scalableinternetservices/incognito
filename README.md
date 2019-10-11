@@ -1,7 +1,11 @@
 # README
 
-William Tan	willtan510 ![photo](https://avatars2.githubusercontent.com/u/16597248?s=460&v=4)
-Raymond Lin	raymondlin1 ![photo](https://avatars3.githubusercontent.com/u/22209475?s=460&v=4)
+<div>
+William Tan	willtan510 <img src="https://avatars2.githubusercontent.com/u/16597248?s=460&v=4" data-canonical-src="https://avatars2.githubusercontent.com/u/16597248?s=460&v=4" width="100" height="100"/> 
+<br></div>
+<div>
+Raymond Lin	raymondlin1 <img src="https://avatars3.githubusercontent.com/u/22209475?s=460&v=4" data-canonical-src="https://avatars3.githubusercontent.com/u/22209475?s=460&v=4" width="100" height="100"/> </br>
+</div>
 Amir Saad	amirsaad2015
 Salekh Parkhati 	SalYard
 
