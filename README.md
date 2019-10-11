@@ -1,14 +1,15 @@
 # README
 
 <div>
-William Tan	willtan510 <img src="https://avatars2.githubusercontent.com/u/16597248?s=460&v=4" data-canonical-src="https://avatars2.githubusercontent.com/u/16597248?s=460&v=4" width="100" height="100"/> 
+William Tan	willtan510 <img src="https://avatars2.githubusercontent.com/u/16597248?s=460&v=4" data-canonical-src="https://avatars2.githubusercontent.com/u/16597248?s=460&v=4" width="75" height="75"/> 
 <br></div>
 <div>
-Raymond Lin	raymondlin1 <img src="https://avatars3.githubusercontent.com/u/22209475?s=460&v=4" data-canonical-src="https://avatars3.githubusercontent.com/u/22209475?s=460&v=4" width="100" height="100"/> </br>
+Raymond Lin	raymondlin1 <img src="https://avatars3.githubusercontent.com/u/22209475?s=460&v=4" data-canonical-src="https://avatars3.githubusercontent.com/u/22209475?s=460&v=4" width="75" height="75"/> </br>
 </div>
 <div> Amir Saad	amirsaad2015 </div>
 <div> Salekh Parkhati 	SalYard </div>
 
+<br>
 Section Time:
 Currently 2 people 12 PM, 2 people 2 PM
 
