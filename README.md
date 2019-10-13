@@ -14,4 +14,4 @@ Section Time:
 Currently 2 people 12 PM, 2 people 2 PM
 
 Project Description:
-A college version secrets sharing forum, where users can anonymously share posts about their university. Viewers can divide each college into subcategories and users can post within one of those categories, including clubs, majors, greek orgs, sports, classes, professors, labs etc... This allows users to share secrets and look at reviews about certain topics on campus 
+A college version secrets sharing forum, where users can anonymously share posts about their university. Viewers can divide each college into subcategories and users can post within one of those categories, including clubs, majors, greek orgs, sports, classes, professors, labs etc... This allows users to share secrets and look at reviews about certain topics on campus. 
