@@ -8,8 +8,18 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(user_params)
+    
+    user_params[:write] = false
 
+
+    
+    @user = User.new(user_params)
+    
+    @user[:write] = false
+    if user_params[:email].length >= 8 && user_params[:email][-8..-1] == "ucla.edu" 
+      @user[:write] = true
+    end
+    
     if @user.save
       
       flash[:success] = "Welcome to the Sample App!"
@@ -26,7 +36,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :username, :password,
+      params.require(:user).permit(:email, :username, :write, :password,
                                    :password_confirmation)
     end
 end
