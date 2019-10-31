@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* Universal */
+body
+{
+  padding-top: 60px;
+}
+
+/* Navbar */
+
+#logo 
+{
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+#logo:hover 
+{
+  text-decoration: none;
+}
+
+.container
+{
+  margin-left: auto;
+  margin-right: auto;
+}
