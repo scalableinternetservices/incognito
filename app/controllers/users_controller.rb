@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     @user[:write] = false
-    if user_params[:email].length >= 8 && user_params[:email][-8..-1] == "ucla.edu" 
+    if user_params[:email].length >= 8 && user_params[:email][-4..-1] == ".edu" 
       @user[:write] = true
     end
     
