@@ -1,25 +1,13 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<h1>Settings</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @user, local: true) do |f| %>
-      <%= render 'shared/error_messages' %>
+  <div class="col-md-6 col-md-offset-2">
 
-      <%= f.label :username %>
-      <%= f.text_field :username, class: 'form-control' %>
+      <h3> Username </h3>
+       <%= @user.username %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
-    <% end %>
+      <h3> Posts </h3>
 
 
   </div>
