@@ -12,10 +12,16 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
+
+$dark-grey: #222;
+$light-grey: #9d9d9d;
+$med-grey: #333333;
 
 /* Universal */
 body
@@ -45,4 +51,38 @@ body
 {
   margin-left: auto;
   margin-right: auto;
+}
+
+#search-btn
+{
+  background-color: $dark-grey;
+  color: $light-grey;
+  &:focus
+  {
+    border: none;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+#search-btn:hover
+{
+  color: white;
+}
+
+#search-bar
+{
+  background-color: $med-grey;
+  color: $light-grey;
+  border: none;
+  &:focus
+  {
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.search
+{
+  margin-top: 8px;  
 }

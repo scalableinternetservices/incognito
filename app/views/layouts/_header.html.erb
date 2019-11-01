@@ -1,8 +1,30 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Incognito", '/', id: "logo" %>
     <nav>
+      <ul class="nav navbar-nav">
+        <li>
+          <div>
+            <%= link_to "Incognito", '/', id: "logo" %>
+          </div>
+        </li>
+        <li>
+          <input class="search form-control mr-sm-2 w-100" 
+                  type="text" 
+                  placeholder="Search" 
+                  aria-label="Search"
+                  id="search-bar">
+        </li>
+        <li>
+          <button type="button" 
+                  class="search btn btn-dark" 
+                  type="submit"
+                  id="search-btn">
+            <i class="fa fa-search"></i>
+          </button>
+        </li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
+        
         <li><%= link_to "Home",  '/' %></li>
         <li><%= link_to "About",  '#' %></li>
         <% if logged_in? %>
