@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_055848) do
+ActiveRecord::Schema.define(version: 2019_11_01_013158) do
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "body"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -23,7 +30,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_055848) do
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

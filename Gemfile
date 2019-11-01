@@ -22,6 +22,9 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bcrypt',         '3.1.13'
 
+######Salekh's Gemmmmmmmmssssss########################
+gem 'simple_form', '~> 5.0', '>= 5.0.1'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
