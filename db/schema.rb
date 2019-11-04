@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_11_01_013158) do
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
