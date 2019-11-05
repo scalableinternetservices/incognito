@@ -8,8 +8,11 @@
        <%= @user.username %>
        
       <h3> College </h3>
-      <%= @user.university %>
-      
+      <% if @user.university %>
+        <%= @user.university %>
+      <% else %>
+        <p> College not found or personal email associated to account</p> 
+      <% end %>
       <h3> Posts </h3>
 
 
