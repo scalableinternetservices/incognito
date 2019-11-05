@@ -1,4 +1,10 @@
+
+
 class UsersController < ApplicationController
+  require "json"
+  file = File.open "app/assets/json/acronym_to_university.json"
+  @@universityMappings = JSON.load file
+  
   before_action :logged_in_user, only: [:edit, :update]
 
   before_action :correct_user,   only: [:edit, :update]
@@ -25,7 +31,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     @user[:write] = false
-    if user_params[:email].length >= 8 && user_params[:email][-4..-1] == ".edu" 
+    if user_params[:email].length >= 4 && user_params[:email][-4..-1] == ".edu" 
+      captureAcronym = /.*@(.*)\.edu/
+      
+      acronymGroups = user_params[:email].match(captureAcronym)
+      puts acronymGroups
+      if acronymGroups.length > 1
+        acronym = acronymGroups[1]
+        @user[:university_acronym] = acronym
+        @user[:university] = @@universityMappings[acronym]
+      end
       @user[:write] = true
     end
     
