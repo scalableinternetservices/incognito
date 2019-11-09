@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-
   #####SALEKH'S ROUTES #########
   get 'posts', to: "posts#index"
   get 'posts/new', to:"posts#new"

@@ -1,9 +1,8 @@
-<h1>Awsome things are coming !!! wait !!</h1>
+<h1><%= current_user.university %></h1>
 <%= link_to "Create A New Post", posts_new_path %>
 
 <% @posts.each do |post|%>
     <p>
-     <%= post.id  %> 
      <%= post.title %>
     </p>
     <p>

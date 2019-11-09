@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
     before_action :extract_post, only: [:show, :edit,:update,:destroy]
     def index 
-        @posts = Post.all.order("created_at DESC")
+        current_uni = current_user.university_acronym
+        @posts = Post.where(university: current_uni).order("created_at DESC")
     end 
 
     def new
@@ -10,11 +11,11 @@ class PostsController < ApplicationController
 
     def create 
         @post = Post.new(post_params)
-            if @post.save 
-                redirect_to @post, notice: "Post created successfully !"
-            else 
-                render :new, alert: "Post creation failed, try again"
-            end
+        if @post.save 
+            redirect_to @post, notice: "Post created successfully !"
+        else 
+            render :new, alert: "Post creation failed, try again"
+        end
     end 
 
     def show 
@@ -40,7 +41,10 @@ class PostsController < ApplicationController
 
     private 
     def post_params
-        params.require(:post).permit(:title,:body)
+        ret_hash = params.require(:post).permit(:title,:body,:user_id)
+        ret_hash[:user_id] = current_user.id
+        ret_hash[:university] = current_user.university_acronym
+        return ret_hash
     end 
 
     def extract_post 

@@ -1,4 +1,9 @@
 <h1>Incognito</h1>
 <div>
   Hello world!
+  <% if current_user %>
+  <div>
+      My college: <%= link_to current_user.university, "posts" %>
+  </div>
+  <% end %>
 </div>
