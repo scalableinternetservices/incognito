@@ -29,7 +29,7 @@ module SessionsHelper
 
   # Redirects to stored location (or to the default).
   def redirect_back_or(default)
-    redirect_to(session[:forwarding_url] || default)
+    redirect_to(session[:forwarding_url] || root_url)
     session.delete(:forwarding_url)
   end
 

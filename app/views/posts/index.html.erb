@@ -1,6 +1,6 @@
 <h1><%= current_user.university %></h1>
 <%= link_to "Create A New Post", posts_new_path %>
-
+<hr/>
 <% @posts.each do |post|%>
     <p>
      <%= post.title %>
@@ -8,8 +8,12 @@
     <p>
      <%= post.body %>
     </p>
+    <div>
+      <%= timestampParser(post.created_at) %>
+    </div>
+    
     <%= link_to "Details", post %>
-
+    <hr/>
     
  
 <% end %> 
