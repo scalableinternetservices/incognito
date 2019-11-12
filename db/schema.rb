@@ -21,13 +21,6 @@ ActiveRecord::Schema.define(version: 2019_11_09_040211) do
     t.string "university"
   end
 
-  create_table "universities", force: :cascade do |t|
-    t.string "full_name"
-    t.string "abbrev"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "username"

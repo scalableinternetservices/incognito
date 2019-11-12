@@ -8,19 +8,15 @@
           </div>
         </li>
         <li>
-          <input class="search form-control mr-sm-2 w-100" 
-                  type="text" 
-                  placeholder="Search" 
-                  aria-label="Search"
-                  id="search-bar">
-        </li>
-        <li>
-          <button type="button" 
-                  class="search btn btn-dark" 
-                  type="submit"
-                  id="search-btn">
-            <i class="fa fa-search"></i>
-          </button>
+            <%= form_tag(search_page_path, :method => "get",   
+            class: 'navbar-form navbar-left') do %>  
+              <div class="input-group">  
+                <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+                <div class="input-group-btn">  
+                  <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+                </div>  
+              </div>  
+            <% end %>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
