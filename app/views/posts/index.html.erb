@@ -8,12 +8,18 @@
     <p>
      <%= post.body %>
     </p>
+
     <div>
       <%= timestampParser(post.created_at) %>
     </div>
     
+    <p>
     <%= link_to "Details", post %>
+    </p>
     <hr/>
+
+  
+    
     
  
 <% end %> 

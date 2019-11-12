@@ -1,4 +1,15 @@
 class User < ApplicationRecord
+ has_many :comments, dependent: :destroy
+
+def username
+  if email!=nil 
+    return email.split('@')[0].capitalize
+  end
+end
+
+
+
+
   attr_accessor :remember_token, :activation_token
   before_save { self.email = email.downcase   }
   before_save { self.username = username.downcase }

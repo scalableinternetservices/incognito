@@ -11,3 +11,24 @@
 <% end %>
 <p> </p>
 <%= link_to "Delete", delete_post_path(@post), method: :delete, data: {confirm: "Are you sure to delete this post ?"} %>
+
+<% if current_user %>
+    <%= form_with model: [@post, @comment] do |f| %>
+        <%= f.text_field :body %>
+        <%= f.submit "Comment" %>
+
+    <% end %>
+<% else %>
+<p>
+        Please signin or signup in order to make a comment !
+<p>
+<% end %>
+
+<div id="comments_panel">
+
+<%= @comments.each do |i| %>
+    <%= render 'comments/comment', comment: i %>
+    <br />
+<% end %>
+
+</div>
