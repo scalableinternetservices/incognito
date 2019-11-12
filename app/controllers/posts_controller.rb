@@ -39,6 +39,20 @@ class PostsController < ApplicationController
         
     end 
 
+    def search  
+      if params[:search].blank?  
+        redirect_to(root_path, alert: "Empty search field!") and return  
+      else  
+        @search_parameter = params[:search].downcase
+        if current_user
+            @university_parameter = current_user.university_acronym
+            @results = Post.where(university: nil).or(Post.where("university = ?", @university_parameter)).where("lower(title) LIKE :search", search: "%#{@search_parameter}%")
+        else
+            @results = Post.where(university: nil).where("lower(title) LIKE :search", search: "%#{@search_parameter}%")
+        end
+      end  
+    end
+
     private 
     def post_params
         ret_hash = params.require(:post).permit(:title,:body,:user_id)
@@ -50,6 +64,7 @@ class PostsController < ApplicationController
     def extract_post 
         @post = Post.find(params[:id])
     end 
+
 
 
 end
