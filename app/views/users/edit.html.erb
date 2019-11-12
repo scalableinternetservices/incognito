@@ -14,7 +14,16 @@
         <p> College not found or personal email associated to account</p> 
       <% end %>
       <h3> Posts </h3>
-
+      <% @posts.each do |post| %>
+        <p>
+          <h4><%= post.title %></h4>
+        </p>
+        <p>
+          <%= post.body %>
+        </p>
+        <%= timestampParser(post.created_at) %>
+        <hr/>
+      <% end %>
 
   </div>
 </div>
