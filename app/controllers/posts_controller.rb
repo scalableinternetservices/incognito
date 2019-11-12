@@ -10,7 +10,13 @@ class PostsController < ApplicationController
     end 
 
     def create 
-        @post = Post.new(post_params)
+        if params[:post][:university] == "0"
+            value = nil
+        else
+            value = current_user.university_acronym
+        end
+        @post = Post.new(post_params(value))
+
         if @post.save 
             redirect_to @post, notice: "Post created successfully !"
         else 
@@ -26,7 +32,7 @@ class PostsController < ApplicationController
 
 
     def update 
-        if @post.update(post_params) 
+        if @post.update(post_params(@post.university)) 
             redirect_to @post, notice:"Your post is updated succussfully!"
         else 
             render :edit, alert: "Oops, edit failed!"
@@ -34,16 +40,20 @@ class PostsController < ApplicationController
     end 
 
     def destroy
+        general = @post.university
         @post.destroy
-        redirect_to posts_path
-        
+        if general
+            redirect_to posts_path
+        else
+            redirect_to generalposts_path
+        end
     end 
 
     private 
-    def post_params
+    def post_params(curr_uni)
         ret_hash = params.require(:post).permit(:title,:body,:user_id)
         ret_hash[:user_id] = current_user.id
-        ret_hash[:university] = current_user.university_acronym
+        ret_hash[:university] = curr_uni
         return ret_hash
     end 
 

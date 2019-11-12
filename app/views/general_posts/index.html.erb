@@ -1,0 +1,19 @@
+<h1><%= "General Forum" %></h1>
+<%= link_to "Create A New Post", posts_new_path %>
+<hr/>
+<% @posts.each do |post|%>
+    <p>
+     <%= post.title %>
+    </p>
+    <p>
+     <%= post.body %>
+    </p>
+    <div>
+      <%= timestampParser(post.created_at) %>
+    </div>
+    
+    <%= link_to "Details", post %>
+    <hr/>
+    
+ 
+<% end %> 

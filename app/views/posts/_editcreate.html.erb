@@ -1,5 +1,11 @@
 <%= simple_form_for(@post)  do |f| %>
     <%= f.input :title %>
     <%= f.input :body %>
+    <% if params[:edit] != "1" %>
+        <%= f.label :university, class: "checkbox inline" do %>
+            <%= f.check_box :university %>
+            <span>Affiliate with your university?</span>
+          <% end %>
+    <% end %>
     <%= f.submit %>
 <% end %>

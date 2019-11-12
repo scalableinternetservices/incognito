@@ -2,8 +2,12 @@
 <h3><%= @post.title %></h3>
 <p> <%= @post.body %> </p>
 
-<%= link_to "Edit", edit_post_path(@post) %>
+<%= link_to "Edit", edit_post_path(@post, edit: 1) %>
 <p> </p>
-<%= link_to "Go Back", posts_path %>
+<% if @post.university %>
+  <%= link_to "Go Back", posts_path %>
+<% else %>
+  <%= link_to "Go Back", generalposts_path %>
+<% end %>
 <p> </p>
 <%= link_to "Delete", delete_post_path(@post), method: :delete, data: {confirm: "Are you sure to delete this post ?"} %>
