@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
     before_action :extract_post, only: [:show, :edit,:update,:destroy]
     def index 
-        current_uni = current_user.university_acronym
-        @posts = Post.where(university: current_uni).order("created_at DESC")
+        if !current_user 
+            redirect_to generalposts_path
+        else
+            current_uni = current_user.university_acronym
+        end
+        @posts = Post.where(university: current_uni, public: false).order("created_at DESC")
     end 
 
     def new
@@ -10,11 +14,11 @@ class PostsController < ApplicationController
     end 
 
     def create 
-        if params[:post][:university] == "0"
-            value = nil
-        else
-            value = current_user.university_acronym
+        if !current_user or current_user.write == false
+            redirect_to generalposts_path, alert: "Not logged in or do not have write access without valid college!"
+            return
         end
+        value = current_user.university_acronym
         @post = Post.new(post_params(value))
 
         if @post.save 
@@ -33,7 +37,7 @@ class PostsController < ApplicationController
 
     def update 
         if @post.update(post_params(@post.university)) 
-            redirect_to @post, notice:"Your post is updated succussfully!"
+            redirect_to @post, notice:"Your post is updated successfully!"
         else 
             render :edit, alert: "Oops, edit failed!"
         end
@@ -65,9 +69,10 @@ class PostsController < ApplicationController
 
     private 
     def post_params(curr_uni)
-        ret_hash = params.require(:post).permit(:title,:body,:user_id)
+        ret_hash = params.require(:post).permit(:title,:body,:user_id,:public)
         ret_hash[:user_id] = current_user.id
         ret_hash[:university] = curr_uni
+    
         return ret_hash
     end 
 

@@ -2,9 +2,9 @@
     <%= f.input :title %>
     <%= f.input :body %>
     <% if params[:edit] != "1" %>
-        <%= f.label :university, class: "checkbox inline" do %>
-            <%= f.check_box :university %>
-            <span>Affiliate with your university?</span>
+        <%= f.label :public, class: "checkbox inline" do %>
+            <%= f.check_box :public %>
+            <span>Make your post visible to general public? (Otherwise only visible in University channel)</span>
           <% end %>
     <% end %>
     <%= f.submit %>
