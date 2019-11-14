@@ -4,7 +4,8 @@
     <% if params[:edit] != "1" %>
         <%= f.label :public, class: "checkbox inline" do %>
             <%= f.check_box :public %>
-            <span>Make your post visible to general public? (Otherwise only visible in University channel)</span>
+            <span>Make your post visible to general public?</span>
+            <div>(Otherwise only visible in University channel)</div>
           <% end %>
     <% end %>
     <%= f.submit %>
