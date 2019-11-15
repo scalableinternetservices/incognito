@@ -3,7 +3,7 @@
 <hr/>
 <% @posts.each do |post|%>
     <p>
-     <%= post.title %>
+     <h4><%= post.title %></h4>
     </p>
     <p>
      <%= post.body %>
@@ -11,7 +11,7 @@
     <div>
       <%= timestampParser(post.created_at) %>
     </div>
-    <p><%= post.university %></p>
+    <p>User's college: <%= User.find(post.user_id).university %></p>
     <%= link_to "Details", post %>
     <hr/>
     

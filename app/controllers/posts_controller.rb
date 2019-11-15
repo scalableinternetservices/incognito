@@ -44,12 +44,12 @@ class PostsController < ApplicationController
     end 
 
     def destroy
-        general = @post.university
+        general = @post.public
         @post.destroy
         if general
-            redirect_to posts_path
-        else
             redirect_to generalposts_path
+        else
+            redirect_to posts_path
         end
     end 
 

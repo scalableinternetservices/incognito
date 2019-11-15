@@ -23,10 +23,10 @@
         </p>
         <%= timestampParser(post.created_at) %>
         in 
-        <% if post.university %>
-          <%= current_user.university %> 
-        <% else %>
+        <% if post.public %>
           General Forum
+        <% else %>
+          <%= current_user.university %> 
         <% end %>
          Community
         <hr/>

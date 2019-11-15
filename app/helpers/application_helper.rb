@@ -39,14 +39,29 @@ module ApplicationHelper
     end
     
     time = timestamp[11..15]
-    hour = time[11..12].to_i
-    if hour > 12
-      hour = (hour - 12).to_s
-      time[0] = hour[0]
-      time[1] = hour[1]
-      time += "pm"
+    hour = timestamp[11..12].to_i
+    #debugger
+    if hour >= 12
+      if hour != 12
+        hour = (hour - 12).to_s
+        
+        if hour.length == 1
+          time[1] = hour[0]
+          time[0] = ''
+        else
+          time[0] = hour[0]
+          time[1] = hour[1]
+        end
+        
+        time += "pm"
+      elsif hour == 24
+        time[0] = '1'
+        time[1] = '2'
+        time += "am"
+      end
+      
     else
-      if hour < 10
+      if hour != 0 and hour < 10
         time[0] = ''
       end
       time += "am"

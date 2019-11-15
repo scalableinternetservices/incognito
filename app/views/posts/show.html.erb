@@ -4,10 +4,10 @@
 
 <%= link_to "Edit", edit_post_path(@post, edit: 1) %>
 <p> </p>
-<% if @post.university %>
-  <%= link_to "Go Back", posts_path %>
-<% else %>
+<% if @post.public %>
   <%= link_to "Go Back", generalposts_path %>
+<% else %>
+  <%= link_to "Go Back", posts_path %>
 <% end %>
 <p> </p>
 <%= link_to "Delete", delete_post_path(@post), method: :delete, data: {confirm: "Are you sure to delete this post ?"} %>
