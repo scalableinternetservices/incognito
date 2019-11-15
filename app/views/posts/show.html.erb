@@ -26,9 +26,9 @@
 
 <div id="comments_panel">
 
-<%= @comments.each do |i| %>
+<% @comments.each do |i| %>
     <%= render 'comments/comment', comment: i %>
-    <br />
+
 <% end %>
 
 </div>

@@ -8,6 +8,12 @@ class CommentsController < ApplicationController
     # redirect_back(fallback_location: @post)
   end
 
+  def destroy 
+      @comment = @post.comments.find(params[:id])
+      @comment.destroy
+  end 
+
+
   private 
   def comment_params 
     params.require(:comment).permit(:body, :post_id)

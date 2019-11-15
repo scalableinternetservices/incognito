@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   get 'posts/:id/edit', to:"posts#edit", as: :edit_post
   patch 'posts/:id', to:"posts#update"
   resources :posts do 
-    post "comments", to: "comments#create"
+    # post "comments", to: "comments#create"
+    resources :comments, only: [:create, :destroy]
   end
 
 
