@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(current_user.id)
+    @posts = Post.where(user_id: @user.id).order("created_at DESC")
   end
 
   def new

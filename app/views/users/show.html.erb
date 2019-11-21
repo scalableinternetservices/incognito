@@ -1,4 +1,38 @@
- <%= @user.username %>
- <%= @user.email %>
+<% provide(:title, "Edit user") %>
+<h1>Settings</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-2">
+
+      <h3> Username </h3>
+       <%= @user.username %>
+       
+      <h3> College </h3>
+      <% if @user.university %>
+        <%= @user.university %>
+      <% else %>
+        <p> College not found or personal email associated to account</p> 
+      <% end %>
+      <h3> Posts </h3>
+      <% @posts.each do |post| %>
+        <p>
+          <h4><%= post.title %></h4>
+        </p>
+        <p>
+          <%= post.body %>
+        </p>
+        <%= timestampParser(post.created_at) %>
+        in 
+        <% if post.public %>
+          General Forum
+        <% else %>
+          <%= current_user.university %> 
+        <% end %>
+         Community
+        <hr/>
+      <% end %>
+
+  </div>
+</div>
  
  
