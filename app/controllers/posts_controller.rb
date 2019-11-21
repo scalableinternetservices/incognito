@@ -6,11 +6,12 @@ class PostsController < ApplicationController
         else
             current_uni = current_user.university_acronym
         end
-        @posts = Post.where(university: current_uni, public: false).order("created_at DESC")
+        @posts = Post.where(university: current_uni, public: false).order("created_at DESC") if stale?(Post.all)
     end 
 
     def new
         @post = Post.new
+        fresh_when true
     end 
 
     def create 
@@ -29,6 +30,7 @@ class PostsController < ApplicationController
     end 
 
     def show 
+        fresh_when([@post, @post.updated_at])
     end 
 
     def edit 
