@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   get 'static_pages/home'
   get 'users/new'
   get 'sessions/new'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
   get  '/signup',  to: 'users#new'
   post 'signup', to: 'users#create'
@@ -15,8 +14,10 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-
+  
   get 'generalposts', to: 'general_posts#index'
+  
+  get 'users/edit', to: 'users#edit'
 
   #####SALEKH'S ROUTES #########
   get 'posts', to: "posts#index"
