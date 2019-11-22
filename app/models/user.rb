@@ -3,9 +3,7 @@ class User < ApplicationRecord
  acts_as_voter
 
 def username
-  if email!=nil 
-    return email.split('@')[0].capitalize
-  end
+  return self.username
 end
 
 
