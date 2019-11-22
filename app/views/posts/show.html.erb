@@ -2,7 +2,20 @@
 <h3><%= @post.title %></h3>
 <p> <%= @post.body %> </p>
 
-<%= link_to "Edit", edit_post_path(@post, edit: 1) %>
+<% if current_user && current_user.id==@post.user_id %>
+  <%= link_to "Edit", edit_post_path(@post, edit: 1) %>
+  <br />
+  <%= link_to like_post_path(@post), method: :put do %>
+    Like 
+      <%= @post.get_upvotes.size %>
+  <% end %>
+  <%= link_to dislike_post_path(@post), method: :put do %>
+    Dislike
+    <%= @post.get_downvotes.size %>
+  <% end %>
+
+
+  <% end %>
 <p> </p>
 <% if @post.university %>
   <%= link_to "Go Back", posts_path %>
@@ -10,8 +23,11 @@
   <%= link_to "Go Back", generalposts_path %>
 <% end %>
 <p> </p>
-<%= link_to "Delete", delete_post_path(@post), method: :delete, data: {confirm: "Are you sure to delete this post ?"} %>
 
+<% if current_user && current_user.id==@post.user_id %>
+
+<%= link_to "Delete", delete_post_path(@post), method: :delete, data: {confirm: "Are you sure to delete this post ?"} %>
+<% end %>
 <% if current_user %>
     <%= form_with model: [@post, @comment] do |f| %>
         <%= f.text_field :body %>
@@ -20,7 +36,7 @@
     <% end %>
 <% else %>
 <p>
-        Please signin or signup in order to make a comment !
+      Please signin or signup in order to make a comment !
 <p>
 <% end %>
 
@@ -28,7 +44,8 @@
 
 <% @comments.each do |i| %>
     <%= render 'comments/comment', comment: i %>
-
 <% end %>
+
+
 
 </div>

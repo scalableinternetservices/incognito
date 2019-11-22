@@ -27,8 +27,20 @@ Rails.application.routes.draw do
   patch 'posts/:id', to:"posts#update"
   resources :posts do 
     # post "comments", to: "comments#create"
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy, :update, :edit]
+    member do 
+        put "like", to: "posts#upvote"
+        put "dislike", to: "posts#downvote"
+    end 
+    resources :comments do 
+      member do 
+        put "like", to: "comments#upvote"
+        put "dislike", to: "comments#downvote"
+    end 
   end
+
+  end
+
 
 
   

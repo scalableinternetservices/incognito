@@ -50,6 +50,19 @@ class PostsController < ApplicationController
             redirect_to generalposts_path
         end
     end 
+    
+    def upvote 
+        @post = Post.find(params[:id])
+        @post.upvote_by current_user
+        redirect_back(fallback_location: root_path)
+      end  
+      
+      def downvote
+        @post = Post.find(params[:id])
+        @post.downvote_by current_user
+        redirect_back(fallback_location: root_path)
+      end
+
 
     def search  
       if params[:search].blank?  

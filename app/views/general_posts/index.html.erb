@@ -13,6 +13,10 @@
     <%= pluralize(post.comments.count, "comment") %> 
     </td>
     <p></p>
+    <td>
+       <%= pluralize(post.get_upvotes.size, "Likes") %>
+    </td>
+    <p></p>
     <div>
     <%= timestampParser(post.created_at) %>
    </div>
