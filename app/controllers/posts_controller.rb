@@ -29,6 +29,8 @@ class PostsController < ApplicationController
     end 
 
     def show 
+        @comment =Comment.new
+        @comments = @post.comments.order("created_at DESC")
     end 
 
     def edit 
@@ -52,6 +54,19 @@ class PostsController < ApplicationController
             redirect_to posts_path
         end
     end 
+    
+    def upvote 
+        @post = Post.find(params[:id])
+        @post.upvote_by current_user
+        redirect_back(fallback_location: root_path)
+      end  
+      
+      def downvote
+        @post = Post.find(params[:id])
+        @post.downvote_by current_user
+        redirect_back(fallback_location: root_path)
+      end
+
 
     def search  
       if params[:search].blank?  

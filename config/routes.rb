@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'comments/create'
   get 'static_pages/home'
   get 'users/new'
   get 'sessions/new'
@@ -25,6 +26,24 @@ Rails.application.routes.draw do
   get 'posts/:id', to:"posts#show", as: :post
   get 'posts/:id/edit', to:"posts#edit", as: :edit_post
   patch 'posts/:id', to:"posts#update"
+  resources :posts do 
+    # post "comments", to: "comments#create"
+    resources :comments, only: [:create, :destroy, :update, :edit]
+    member do 
+        put "like", to: "posts#upvote"
+        put "dislike", to: "posts#downvote"
+    end 
+    resources :comments do 
+      member do 
+        put "like", to: "comments#upvote"
+        put "dislike", to: "comments#downvote"
+    end 
+  end
+
+  end
+
+
+
   
   get '/search' => 'posts#search', :as => 'search_page'
 end

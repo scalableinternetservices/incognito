@@ -1,19 +1,39 @@
 <h1><%= "General Forum" %></h1>
 <%= link_to "Create A New Post", posts_new_path %>
 <hr/>
-<% @posts.each do |post|%>
+<% @posts.each_with_index do |post,indx|%>
     <p>
+<<<<<<< HEAD
      <h4><%= post.title %></h4>
+=======
+     <h5>[<%= indx+1 %>]</h5>  Title :  <%= post.title %>
+>>>>>>> posts_comments
     </p>
     <p>
-     <%= post.body %>
+      Text: <%= post.body %>
     </p>
+
+    <td> 
+    <%= pluralize(post.comments.count, "comment") %> 
+    </td>
+    <p></p>
+    <td>
+       <%= pluralize(post.get_upvotes.size, "Likes") %>
+    </td>
+    <p></p>
     <div>
+<<<<<<< HEAD
       <%= timestampParser(post.created_at) %>
     </div>
     <p>User's college: <%= User.find(post.user_id).university %></p>
+=======
+    <%= timestampParser(post.created_at) %>
+   </div>
+
+>>>>>>> posts_comments
     <%= link_to "Details", post %>
     <hr/>
+ 
     
  
 <% end %> 

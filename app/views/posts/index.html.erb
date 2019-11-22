@@ -8,12 +8,19 @@
     <p>
      <%= post.body %>
     </p>
+
     <div>
       <%= timestampParser(post.created_at) %>
     </div>
     <p>User's college: <%= User.find(post.user_id).university %></p>
+    
+    <p>
     <%= link_to "Details", post %>
+    </p>
     <hr/>
+
+  
+    
     
  
 <% end %> 

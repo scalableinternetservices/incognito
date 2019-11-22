@@ -8,5 +8,8 @@
             <div>(Otherwise only visible in University channel)</div>
           <% end %>
     <% end %>
-    <%= f.submit %>
+    <%= f.submit  %>
+    <% if params[:edit] == "1" %>
+        <%= button_tag "Undo Changes", :type => 'reset' %>
+    <% end %> 
 <% end %>
