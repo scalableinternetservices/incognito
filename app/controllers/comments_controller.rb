@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.save
     # redirect_back(fallback_location: @post)
+    return
   end
 
   def destroy 
