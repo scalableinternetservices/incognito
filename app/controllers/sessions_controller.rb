@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    fresh_when true
   end
   
   def create

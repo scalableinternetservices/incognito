@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    fresh_when true
   end
   
   def create
