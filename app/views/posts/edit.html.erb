@@ -1,2 +1,7 @@
+
+<% if params[:edit] == "1" && !(current_user && current_user.id==@post.user_id)%>
+    <h1> Unauthorized Access Is Not Permitted, Please Log in to Edit! </h1>
+<% else %>
 <h1> Edit Your Post </h1>
 <%= render 'posts/editcreate' %>
+<% end %>

@@ -31,13 +31,15 @@ class CommentsController < ApplicationController
   def upvote 
     @comment = @post.comments.find(params[:id])
     @comment.upvote_by current_user
-    redirect_back(fallback_location: root_path)
+    #redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: @post)
   end  
   
   def downvote
     @comment = @post.comments.find(params[:id])
     @comment.downvote_by current_user
-    redirect_back(fallback_location: root_path)
+    #redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: @post)
   end
   
   private 
