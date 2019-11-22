@@ -27,8 +27,6 @@ class UsersController < ApplicationController
   def create
     
     user_params[:write] = false
-
-
     
     @user = User.new(user_params)
     
