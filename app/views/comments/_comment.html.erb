@@ -20,7 +20,7 @@
     <%= comment.get_upvotes.size %>
     <% end %>
 
-    <%= link_to dislike_post_comment_path(@post, comment), method: :put do %>
+    <%= link_to dislike_post_comment_path(@post, comment), method: :put do  %>
     Downvote
     <%= comment.get_downvotes.size %>
     <% end %>

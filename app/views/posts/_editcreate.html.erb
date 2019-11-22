@@ -1,3 +1,6 @@
+<% if params[:edit] == "1" && !(current_user && current_user.id==@post.user_id)%>
+    <h1> Unauthorized Access Is Not Permitted, Please Log in to Edit! </h1>
+<% else %>
 <%= simple_form_for(@post)  do |f| %>
     <%= f.input :title %>
     <%= f.input :body %>
@@ -13,3 +16,4 @@
         <%= button_tag "Undo Changes", :type => 'reset' %>
     <% end %> 
 <% end %>
+ <% end %>
