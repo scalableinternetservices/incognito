@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
+<tsung loglevel="notice">
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers="15000"/>
+  </clients>
+
+  <servers>
+    <server host="incognito-raymond.us-west-2.elasticbeanstalk.com" port="80" type="tcp"/>
+  </servers>
+
+
+  <load>
+    <arrivalphase phase="1" duration="10" unit="second">
+      <users arrivalrate="1" unit="second"/>
+    </arrivalphase>
+  </load>
+
+  <options>
+    <option name="global_ack_timeout" value="2000"/>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+
+    <option name="file_server" id="random_emails" value="./random_emails.csv"/>
+  </options>
+
+  <sessions>
+    <session name="http-example" probability="100" type="ts_http">
+      <!-- visit the home page -->
+      <request>
+        <http url="/" version="1.1" method="GET"/>
+      </request>
+
+      <thinktime value="2" random="true"/>
+
+      <!-- user logs in -->
+      <request>
+        <http url="/login" version="1.1" method="GET"/>
+      </request>
+
+      <!-- user signs up -->
+      <request>
+        <http url="/signup" version="1.1" method="GET"/>
+      </request>
+
+      <thinktime value="5" random="true"/>
+
+      <setdynvars sourcetype="random_string" length="10">
+        <var name="username"/>
+      </setdynvars>
+
+      <setdynvars sourcetype="random_string" length="8">
+        <var name="password"/>
+      </setdynvars>
+
+      <setdynvars sourcetype="file" fileid="random_emails" order="random">
+        <var name="email"/>
+      </setdynvars>
+
+      <request subst="true">
+        <dyn_variable name="created_profile_url" re="[Ll]ocation: (http://.*)\r" />
+        <http url="/users" version="1.1" contents="user%5Busername%5D=%%_username%%&amp;user%5Bemail%5D=%%_email%%&amp;user%5Bpassword%5D=%%_password%%&amp;user%5Bpassword_confirmation%5D=%%_password%%&amp;commit=Create+my+account"
+          content_type="application/x-www-form-urlencoded" 
+          method="POST">
+        </http>
+      </request>
+
+      <!-- user visits home page -->
+      <request>
+        <http url="/" version="1.1" method="GET"/>
+      </request>
+
+      <thinktime value="5" random="true"/>
+
+      <!-- user visits school community -->
+      <request>
+        <http url="/posts" version="1.1" method="GET"/>
+      </request>
+
+      <thinktime value="5" random="true"/>
+
+      <!-- user makes a new post on the school community -->
+      <request>
+        <http url="/posts/new" version="1.1" method="GET"/>
+      </request>
+
+      <thinktime value="5" random="true"/>
+
+      <setdynvars sourcetype="random_string" length="8">
+        <var name="school_post_title"/>
+      </setdynvars>
+
+      <setdynvars sourcetype="random_string" length="30">
+        <var name="school_post_body"/>
+      </setdynvars>
+
+      <request subst="true">
+        <dyn_variable name="created_school_post_url" re="[Ll]ocation: (http://.*)\r" />
+        <http url="/posts" version="1.1" contents="post%5Btitle%5D=%%_school_post_title%%&amp;post%5Bbody%5D=%%_school_post_body%%&amp;post%5Bpublic%5D=0&amp;commit=Create+Post" 
+          content_type="application/x-www-form-urlencoded" 
+          method="POST">
+        </http>
+      </request>
+
+      <!-- user edits the created post -->
+      <setdynvars sourcetype="random_string" length="30">
+        <var name="edited_post_body" />
+      </setdynvars>
+
+      <request subst="true">
+        <http url="%%_created_school_post_url%%" version="1.1" contents="post%5Btitle%5D=%%_school_post_title%%&amp;post%5Bbody%5D=%%_edited_post_body%%&amp;commit=Update+Post"
+          content_type="application/x-www-form-urlencoded" 
+          method="PATCH">
+        </http>
+      </request>
+
+      <!-- user visits the general community -->
+      <request>
+        <http url="/generalposts" version="1.1" method="GET"/>
+      </request>
+
+      <!-- user makes a new post in general community -->
+      <request>
+        <http url="/posts/new" version="1.1" method="GET"/>
+      </request>
+
+      <thinktime value="5" random="true"/>
+
+      <setdynvars sourcetype="random_string" length="8">
+        <var name="general_post_title"/>
+      </setdynvars>
+
+      <setdynvars sourcetype="random_string" length="30">
+        <var name="general_post_body"/>
+      </setdynvars>
+
+      <request subst="true">
+        <http url="/posts" version="1.1" contents="              
+          post%5Btitle%5D=%%_general_post_title%%&amp;              
+          post%5Bbody%5D=%%_general_post_body%%&amp;              
+          post%5Bpublic%5D=1&amp;              
+          commit=Create+Post" 
+          content_type="application/x-www-form-urlencoded" 
+          method="POST">
+        </http>
+      </request>
+
+      <!-- user visits their own profile -->
+      <request subst="true">
+        <http url="%%_created_profile_url%%" version="1.1" method="GET"></http>
+      </request>
+
+      <!-- user logs out -->
+      <request>
+        <http url="/logout" version="1.1" content_type="application/x-www-form-urlencoded" method="DELETE">
+        </http>
+      </request>
+    </session>
+  </sessions>
+</tsung>
