@@ -3,11 +3,7 @@
 <hr/>
 <% @posts.each_with_index do |post,indx|%>
     <p>
-<<<<<<< HEAD
-     <h4><%= post.title %></h4>
-=======
      <h5>[<%= indx+1 %>]</h5>  Title :  <%= post.title %>
->>>>>>> posts_comments
     </p>
     <p>
       Text: <%= post.body %>
@@ -22,15 +18,9 @@
     </td>
     <p></p>
     <div>
-<<<<<<< HEAD
       <%= timestampParser(post.created_at) %>
     </div>
     <p>User's college: <%= User.find(post.user_id).university %></p>
-=======
-    <%= timestampParser(post.created_at) %>
-   </div>
-
->>>>>>> posts_comments
     <%= link_to "Details", post %>
     <hr/>
  
