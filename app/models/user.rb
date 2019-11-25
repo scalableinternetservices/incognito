@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+ has_many :comments, dependent: :destroy
+ acts_as_voter
+
+
+
   attr_accessor :remember_token, :activation_token
   before_save { self.email = email.downcase   }
   before_save { self.username = username.downcase }

@@ -1,0 +1,7 @@
+<% if params[:edit] == "1" && !(current_user && current_user.id==@post.user_id)%>
+    <h1> Please Sign in to Edit a Comment  </h1>
+<%else %>
+<%= render 'comments/editform' %>
+<% end %>
+
+

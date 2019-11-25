@@ -1,3 +1,6 @@
+<% if params[:edit] == "1" && !(current_user && current_user.id==@post.user_id)%>
+    <h1> Unauthorized Access Is Not Permitted, Please Log in to Edit! </h1>
+<% else %>
 <%= simple_form_for(@post)  do |f| %>
     <%= f.input :title %>
     <%= f.input :body %>
@@ -8,5 +11,9 @@
             <div>(Otherwise only visible in University channel)</div>
           <% end %>
     <% end %>
-    <%= f.submit %>
+    <%= f.submit  %>
+    <% if params[:edit] == "1" %>
+        <%= button_tag "Undo Changes", :type => 'reset' %>
+    <% end %> 
 <% end %>
+ <% end %>
