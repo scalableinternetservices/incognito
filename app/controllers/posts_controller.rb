@@ -30,9 +30,9 @@ class PostsController < ApplicationController
     end 
 
     def show 
-        fresh_when([@post, @post.updated_at])
         @comment =Comment.new
         @comments = @post.comments.order("created_at DESC")
+        fresh_when([@post, @post.updated_at, @comments.length])
     end 
 
     def edit 
