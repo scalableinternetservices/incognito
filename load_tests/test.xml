@@ -1,3 +1,32 @@
+<!-- 
+  instructions to run the script:
+  1. Deploy app on Elastic Beanstalk
+  2. Create a Tsung instance on Cloudformation
+  3. 'ssh' into Elastic Beanstalk 
+  4. 'cd' into app/load_tests
+  5. If already exists, delete 'random_emails.csv' and generate it by running
+     '$python3 generate_random_emails.py'
+     -run 'chmod' if needed
+  6. 'ssh' into Tsung instance
+  7. Transfer 'test.xml' and 'random_emails.csv' to Tsung instance
+  8. Run the script on Tsung instance using '$tsung -f test.xml start'
+     -should take around 2 minutes
+  9. To generate graphs, 'cd' into tsung_logs/<name of newly generated directory>
+     -name of the new directory should be the most recent timestamp
+  10. Run '/usr/local/lib/tsung/bin/tsung_stats.pl' to generate graphs
+  11. To view graphs, transfer directory to local machine and open 'graphs.html'
+  12. To run script again, delete 'random_emails.csv' in Elastic Beanstalk and repeat steps 5-11
+  
+  Reasoning:
+  The whole point is to generate a new 'random_emails.csv' for eact test. This is because
+  Tsung doesn't really pick random emails from our 'random_emails.csv', when creating a
+  new user. So if you try to run the script without generating a new 'random_emails.csv',
+  it will not work, because it uses the same emails as the last time you ran the script.
+  And since it tries to signup with existing emails, our app doesn't let you.
+  I don't know why this is... But this is how I got the script to work.
+-->
+
+
 <?xml version="1.0"?>
 <!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
 <tsung loglevel="notice">
