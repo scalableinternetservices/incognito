@@ -11,12 +11,12 @@ Post.create!(title:  "Example Post",
              body: "EXAMPLE CONTENT",
              user_id: 1,
              university: "ucla",
-             public: true)
+             public: false)
 
 99.times do |n|
   Post.create!(title:  "Example Post",
              body: "EXAMPLE CONTENT",
              user_id: 1,
              university: "ucla",
-             public: true)
+             public: false)
 end

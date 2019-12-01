@@ -4,7 +4,6 @@
   <hr/>
   <% @posts.each do |post|%>
     
-    
     <% cache(cache_key_for_post_row(post)) do %>
       <p>
        <h4><%= post.title %></h4>
@@ -27,6 +26,7 @@
     
       
       
-   
-  <% end %> 
-<% end %>
+    
+<% end %> 
+<% end %> 
+
