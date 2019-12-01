@@ -1,26 +1,32 @@
-<h1><%= current_user.university %></h1>
-<%= link_to "Create A New Post", posts_new_path %>
-<hr/>
-<% @posts.each do |post|%>
-    <p>
-     <h4><%= post.title %></h4>
-    </p>
-    <p>
-     <%= post.body %>
-    </p>
-
-    <div>
-      <%= timestampParser(post.created_at) %>
-    </div>
-    <p>User's college: <%= User.find(post.user_id).university %></p>
+<% cache(cache_key_for_post_page) do %>
+  <h1><%= current_user.university %></h1>
+  <%= link_to "Create A New Post", posts_new_path %>
+  <hr/>
+  <% @posts.each do |post|%>
     
-    <p>
-    <%= link_to "Details", post %>
-    </p>
-    <hr/>
-
+    
+    <% cache(cache_key_for_post_row(post)) do %>
+      <p>
+       <h4><%= post.title %></h4>
+      </p>
+      <p>
+       <%= post.body %>
+      </p>
+  
+      <div>
+        <%= timestampParser(post.created_at) %>
+      </div>
+      <p>User's college: <%= User.find(post.user_id).university %></p>
+      
+      <p>
+      <%= link_to "Details", post %>
+      </p>
+      <hr/>
+    <% end %>
   
     
-    
- 
-<% end %> 
+      
+      
+   
+  <% end %> 
+<% end %>

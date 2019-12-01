@@ -1,7 +1,11 @@
+<% cache(cache_key_for_post_page) do %>
+
 <h1><%= "General Forum" %></h1>
 <%= link_to "Create A New Post", posts_new_path %>
 <hr/>
 <% @posts.each_with_index do |post,indx|%>
+    <% cache(cache_key_for_post_row(post)) do %>
+    
     <p>
      <h5>[<%= indx+1 %>]</h5>  Title :  <%= post.title %>
     </p>
@@ -23,7 +27,10 @@
     <p>User's college: <%= User.find(post.user_id).university %></p>
     <%= link_to "Details", post %>
     <hr/>
- 
+    
+    <% end %>
     
  
 <% end %> 
+<% end %> 
+
