@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_183831) do
+ActiveRecord::Schema.define(version: 2019_12_04_192848) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_183831) do
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["id"], name: "index_comments_on_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -31,6 +32,8 @@ ActiveRecord::Schema.define(version: 2019_12_04_183831) do
     t.string "university"
     t.boolean "public"
     t.index "\"post_id\"", name: "index_posts_on_post_id"
+    t.index ["university"], name: "index_posts_on_university"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,6 +49,8 @@ ActiveRecord::Schema.define(version: 2019_12_04_183831) do
     t.string "university_acronym"
     t.string "university"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["id"], name: "index_users_on_id"
+    t.index ["username"], name: "index_users_on_username"
   end
 
   create_table "votes", force: :cascade do |t|
