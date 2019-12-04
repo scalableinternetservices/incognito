@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_025638) do
+ActiveRecord::Schema.define(version: 2019_12_04_183831) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_025638) do
     t.integer "user_id"
     t.string "university"
     t.boolean "public"
+    t.index "\"post_id\"", name: "index_posts_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|
