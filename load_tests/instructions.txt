@@ -2,7 +2,7 @@ Instructions to run the script:
 1. Deploy app on Elastic Beanstalk
 2. Create a Tsung instance on Cloudformation
 3. 'ssh' into Elastic Beanstalk 
-4. 'cd' into app/load_tests
+4. 'cd' into /load_tests
 5. If already exists, delete 'random_emails.csv' and generate it by running
     '$python3 generate_random_emails.py'
     -run 'chmod' if needed
