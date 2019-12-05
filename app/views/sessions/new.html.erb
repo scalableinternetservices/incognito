@@ -1,8 +1,9 @@
 <% provide(:title, "Log In") %>
-<h1>Log In</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+
+<div class="row" >
+  <div id="posts_entire" class="col-md-6 col-md-offset-3">
+    <h1>Log In</h1>
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
     
     <%= f.label :username %>
