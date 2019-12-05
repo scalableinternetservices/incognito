@@ -1,10 +1,10 @@
-<h1 style="text-align:center"> Edit Comment </h1>
+<div id="edit_comment">
+<h1> Edit Comment </h1>
 <h3> Post Title: <%= @post.title %> </h3>
-<h3> Post Body:</h3>  
-<h4> <%= @post.body %> </h4>
+<h3> Post Body:</h3>  <h4> <%= @post.body %> </h4>
             
             
-
+<div id="body_comment_edit">
 <%= form_with model: [@post, @comment] do |f| %>
     <div id="title_edit">
         <%= f.text_field :body %>
@@ -12,7 +12,8 @@
     
     <br />
     <br />
-    <%= f.button :Save, :style =>'color:white;background-color:darkgreen;border-radius:10px'  %>
-    <%= button_tag "Undo Changes", :type => 'reset',:style =>'color:white;background-color:rgb(53, 53, 219);border-radius:10px' %>
-     
+    <%= f.button :save, :class=>'save_but' %>
+    <%= button_tag "Undo Changes", :type => 'reset', :class=>'undo_change'%>    
 <% end %>
+</div>
+</div>

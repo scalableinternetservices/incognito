@@ -45,9 +45,25 @@
 
 #delete_edit_table{
     float: right;
-    
-   
+}
 
+#edit_comment{
+    background-color: rgb(61, 60, 60);
+    color:white;
+    padding: 20px;
+}
+#body_comment_edit{
+    color: black;
+}
+.save_but{
+    background-color: rgb(53, 53, 219);
+    color: white;
+    width: 100px;
+}
+.undo_change{
+    background-color:rgb(53, 53, 219);
+    color:white; 
+    width: 150px;
 }
 
 
