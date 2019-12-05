@@ -1,4 +1,4 @@
-<div id="posts_entire">
+<div id="posts_entire" class="row">
 <h1><%= current_user.university %></h1>
 <%= link_to "Create A New Post", posts_new_path %>
 <hr/>
@@ -9,7 +9,15 @@
     <p>
      <%= post.body %>
     </p>
-
+    
+    <td> 
+    <%= pluralize(post.comments.count, "comment") %> 
+    </td>
+    <p></p>
+    <td>
+       <%= pluralize(post.get_upvotes.size, "Likes") %>
+    </td>
+    
     <div>
       <%= timestampParser(post.created_at) %>
     </div>

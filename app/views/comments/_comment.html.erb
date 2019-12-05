@@ -3,13 +3,13 @@
 <div id=individual_comment>
 <div id="comment-<%= comment.id %>">
 <br />
-[<%= comment.created_at.strftime("%D,%l:%M %P") %>]
+
 <h4><%= comment.user.username %> : </h4>
     <p id="comment-<%= comment.id %>-body" >
         <%= comment.body %> 
     </p>
     
-  
+  <%= timestampParser(comment.created_at) %>
     
 
 

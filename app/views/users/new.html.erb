@@ -1,8 +1,8 @@
-<h1>Sign up</h1>
-<p>This will be a signup page for new users.</p>
-
+<div >
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  
+  <div id="posts_entire" class="col-md-6 col-md-offset-3">
+    <h1>Sign up</h1>
     <%= form_with(model: @user, local: true) do |f| %>
     <%= render 'shared/error_messages' %>
     
@@ -23,4 +23,5 @@
     
     <p>Already have an account? <%= link_to "Log In", login_path %></p>
   </div>
+</div>
 </div>

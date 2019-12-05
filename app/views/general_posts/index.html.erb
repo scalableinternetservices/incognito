@@ -4,10 +4,10 @@
 <hr/>
 <% @posts.each_with_index do |post,indx|%>
     <p>
-     <h5>[<%= indx+1 %>]</h5>  Title :  <%= post.title %>
+     <h4><%= post.title %></h4>
     </p>
     <p>
-      Text: <%= post.body %>
+      <%= post.body %>
     </p>
 
     <td> 
