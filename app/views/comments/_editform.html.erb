@@ -1,14 +1,16 @@
+<div id="edit_comment">
 <h1> Edit your comment here </h1>
 <h3> Post title: <%= @post.title %> </h3>
 <h3> Post Body:</h3>  <h4> <%= @post.body %> </h4>
             
             
-
+<div id="body_comment_edit">
 <%= form_with model: [@post, @comment] do |f| %>
     <%= f.text_field :body %>
     <br />
     <br />
-    <%= f.button :Save  %>
-    <%= button_tag "Undo Changes", :type => 'reset' %>
-     
+    <%= f.button :save, :class=>'save_but' %>
+    <%= button_tag "Undo Changes", :type => 'reset', :class=>'undo_change'%>    
 <% end %>
+</div>
+</div>
