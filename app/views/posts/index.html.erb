@@ -1,21 +1,22 @@
 <div id="posts_entire" class="row">
 <h1><%= current_user.university %></h1>
-<%= link_to "Create A New Post", posts_new_path %>
+<%= link_to "Create A New Post", posts_new_path,class:'create_general' %>
 <hr/>
 <% @posts.each do |post|%>
+<div class='general_post'>
     <p>
-     <h4><%= post.title %></h4>
+     <h4 class='general_id'><%= post.title %></h4>
     </p>
     <p>
      <%= post.body %>
     </p>
-    
+</div>
     <td> 
     <%= pluralize(post.comments.count, "comment") %> 
     </td>
-    <p></p>
+    <br/>
     <td>
-       <%= pluralize(post.get_upvotes.size, "Likes") %>
+       <%= pluralize(post.get_upvotes.size, "Like") %>
     </td>
     
     <div>
@@ -24,7 +25,7 @@
     <p>User's college: <%= User.find(post.user_id).university %></p>
     
     <p>
-    <%= link_to "Details", post %>
+    <%= link_to "Details", post,class:'details_general' %>
     </p>
     <hr/>
 <% end %> 

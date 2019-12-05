@@ -61,7 +61,7 @@
 <div id='comment_box'>
     <h3 style="margin-left:10px;color:white"> Comments </h3>
     <div id="comments_panel">
-    <% @comments.each do |i| %>
+    <% @comments.reverse_each do |i| %>
         <%= render 'comments/comment', comment: i %>
     <% end %>
     </div>
@@ -70,7 +70,7 @@
       <div id='comment_form'>
         <%= form_with model: [@post, @comment] do |f| %>
             <%= f.text_field :body %>
-            <%= f.submit "Comment" %>
+            <%= f.submit "Leave a Comment", :class => 'submit_class_name' %>
         <% end %>
         </div>
     <% else %>

@@ -1,6 +1,6 @@
 
 <% if params[:edit] == "1" && !(current_user && current_user.id==@post.user_id)%>
-   <div class="wrong_access"> <h1> Unauthorized Access Is Not Permitted, Please Log in to Edit! </h1></div>
+   <div > <h1 class="wrong_access"> Unauthorized Access Is Not Permitted, Please Log in to Edit! </h1></div>
 <% else %>
 
 <div id="edit_post">

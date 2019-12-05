@@ -1,28 +1,32 @@
 <div id='entire_general_post'>
 <h1><%= "General Forum" %></h1>
-<%= link_to "Create A New Post", posts_new_path %>
+<% if current_user %>
+  <%= link_to "Create A New Post", posts_new_path,class:'create_general' %>
+<%end%>
 <hr/>
 <% @posts.each_with_index do |post,indx|%>
+  <div class='general_post'>
     <p>
-     <h4><%= post.title %></h4>
+     <h4 class='general_id'><%= post.title %></h4>
     </p>
     <p>
       <%= post.body %>
     </p>
+    </div>
 
     <td> 
     <%= pluralize(post.comments.count, "comment") %> 
     </td>
-    <p></p>
+    <br/>
     <td>
-       <%= pluralize(post.get_upvotes.size, "Likes") %>
+       <%= pluralize(post.get_upvotes.size, "Like") %>
     </td>
-    <p></p>
+    <br />
     <div>
       <%= timestampParser(post.created_at) %>
     </div>
     <p>User's college: <%= User.find(post.user_id).university %></p>
-    <%= link_to "Details", post %>
+    <%= link_to "Details", post,class:'details_general' %>
     <hr/>
  <% end %> 
 

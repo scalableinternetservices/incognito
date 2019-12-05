@@ -6,7 +6,7 @@
   </clients>
 
   <servers>
-    <server host="m4-large.us-west-2.elasticbeanstalk.com" port="80" type="tcp"/>
+    <server host="xlargem.us-west-2.elasticbeanstalk.com " port="80" type="tcp"/>
   </servers>
 
   <load>
