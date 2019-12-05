@@ -22,7 +22,7 @@ class PostsController < ApplicationController
         @post = Post.new(post_params(value))
 
         if @post.save 
-            redirect_to @post, notice: "Post created successfully !"
+            redirect_to @post
         else 
             render :new, alert: "Post creation failed, try again"
         end
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
     def update 
         if @post.update(post_params(@post.university)) 
-            redirect_to @post, notice:"Your post is updated successfully!"
+            redirect_to @post
         else 
             render :edit, alert: "Oops, edit failed!"
         end

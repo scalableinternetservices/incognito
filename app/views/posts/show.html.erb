@@ -1,53 +1,83 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<h3><%= @post.title %></h3>
-<p> <%= @post.body %> </p>
+<div id=go_back>
+  <% if @post.public %>
+    <%= link_to "Go Back", generalposts_path, class:'go_back' %>
+  <% else %>
+    <%= link_to "Go Back", posts_path,class:'go_back' %>
+  <% end %>
+</div>
+
+<div id=whole_page>
+
+<div id=post>
+<h3 id=post_id> Title: <%= @post.title %></h3>
+<p id=post_body> <%= @post.body %> </p>
+
 
 <% if current_user && current_user.id==@post.user_id %>
-  <%= link_to "Edit", edit_post_path(@post, edit: 1) %>
+<table>
+  <tr>
+    <th>
+     
+        <div id=link_edit> <%= link_to "Edit", edit_post_path(@post, edit: 1), class:'edit_link'%></div>
+    </th>
+    <th>
+        <div id=link_delete> <%= link_to "Delete", delete_post_path(@post), method: :delete, data: {confirm: "Are you sure to delete this post ?"},class:'delete_link' %> </div>
+    </th>
+  </tr>
+</table>
   <br />
   <% end %>
   <% if current_user %>
+  <table id=like_dislike>
+   <tr>
+  <th>
   <%= link_to like_post_path(@post), method: :put do %>
-    Like 
-      <%= @post.get_upvotes.size %>
+    <div id=like_count> <i class="fa fa-thumbs-up" style="font-size:36px;color:white;margin:10px"></i></div>
+  </th>
+  <th>
+      <div class=count> <%= @post.get_upvotes.size %> </div>
+  </th>
   <% end %>
+  <th>
   <%= link_to dislike_post_path(@post), method: :put do %>
-    Dislike
-    <%= @post.get_downvotes.size %>
+    <div id=dislike_count>  <i class="fa fa-thumbs-down" style="font-size:36px;color:white;margin:10px"></i></div>
+  </th>
+  <th>
+    <div class=count> <%= @post.get_downvotes.size %> </div>
+  </th>
+  </tr>
   <% end %>
-
+  </table>
 
   <% end %>
-<p> </p>
-<% if @post.public %>
-  <%= link_to "Go Back", generalposts_path %>
-<% else %>
-  <%= link_to "Go Back", posts_path %>
-<% end %>
+  </div>
 <p> </p>
 
-<% if current_user && current_user.id==@post.user_id %>
 
-<%= link_to "Delete", delete_post_path(@post), method: :delete, data: {confirm: "Are you sure to delete this post ?"} %>
-<% end %>
-<% if current_user %>
-    <%= form_with model: [@post, @comment] do |f| %>
-        <%= f.text_field :body %>
-        <%= f.submit "Comment" %>
 
+<p> </p>
+<div id='comment_box'>
+    <h3 style="margin-left:10px;color:white"> Comments </h3>
+    <div id="comments_panel">
+    <% @comments.each do |i| %>
+        <%= render 'comments/comment', comment: i %>
     <% end %>
-<% else %>
-<p>
-      Please signin or signup in order to make a comment !
-<p>
-<% end %>
+    </div>
 
-<div id="comments_panel">
-
-<% @comments.each do |i| %>
-    <%= render 'comments/comment', comment: i %>
-<% end %>
-
-
+    <% if current_user %>
+      <div id='comment_form'>
+        <%= form_with model: [@post, @comment] do |f| %>
+            <%= f.text_field :body %>
+            <%= f.submit "Comment" %>
+        <% end %>
+        </div>
+    <% else %>
+    <p id=sign_in_error>
+          Please signin or signup in order to make a comment !
+    <p>
+    <% end %>
+</div>
 
 </div>

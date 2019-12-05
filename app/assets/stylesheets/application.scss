@@ -27,6 +27,7 @@ $med-grey: #333333;
 body
 {
   padding-top: 60px;
+  background-image: url(/assets/abstract.jpg);
 }
 
 /* Navbar */
@@ -86,3 +87,57 @@ body
 {
   margin-top: 8px;  
 }
+
+#icon{
+
+  background-color: white;
+  position: absolute;
+  height: 300px;
+  width: 425px;
+  margin: -100px 0 0 -200px;
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  border:solid darkslategray 2px;
+}
+
+#welcome{
+  margin-top: 10px;
+  margin-left: 108px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+#icon_img{
+  top: 50%;
+  left: 50%;
+  margin-top: 10px;
+  margin-left: 160px;
+
+}
+
+.general_post_link{
+  background-color:rgb(53, 53, 219) ;
+  color:white;
+  padding: 4px;
+  margin-left: 135px;
+  width: 200px;
+  height: 60px;
+  border-radius: 20px;
+  border:solid darkslategray;
+
+}
+.general_post_link:hover{
+  color:yellow
+}
+
+.unv_link{
+  background-color:rgb(53, 53, 219) ;
+  color:white;
+  padding: 4px;
+  border-radius: 5px;
+
+}
+
+
+
+

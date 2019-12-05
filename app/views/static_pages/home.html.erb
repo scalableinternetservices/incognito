@@ -1,12 +1,18 @@
-<h1>Incognito</h1>
+
+<div id="wrapper">
+<div id="icon">
+ <h1 style="text-align:center">Incognito</h1>
+  <img id='icon_img' src="assets/newicon.jpg" alt="icon_page" width="100px" height="100pxs">
+   <p id='welcome'> Welcome to the most private land  </p>
+    <%= link_to "Check Out What's New", "generalposts", class: "general_post_link" %>
+</div>
+</div>
+
 <div>
-  Hello world!
   <% if current_user %>
   <div>
-      My college: <%= link_to current_user.university, "posts" %>
+     See posts from : <%= link_to current_user.university, "posts",class:"unv_link" %>
   </div>
   <% end %>
-  <div>
-      General Forum: <%= link_to "here", "generalposts" %>
-  </div>
+
 </div>

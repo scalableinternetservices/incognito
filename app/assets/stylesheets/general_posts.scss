@@ -1,3 +1,10 @@
 // Place all the styles related to the general_posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$dark-grey: #222;
+#entire_general_post{
+    background-color: rgb(61, 60, 60);
+    color:white;
+    padding: 20px;
+
+}

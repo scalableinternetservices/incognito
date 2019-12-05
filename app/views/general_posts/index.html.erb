@@ -1,3 +1,4 @@
+<div id='entire_general_post'>
 <h1><%= "General Forum" %></h1>
 <%= link_to "Create A New Post", posts_new_path %>
 <hr/>
@@ -23,7 +24,6 @@
     <p>User's college: <%= User.find(post.user_id).university %></p>
     <%= link_to "Details", post %>
     <hr/>
- 
-    
- 
-<% end %> 
+ <% end %> 
+
+ </div>

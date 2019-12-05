@@ -1,3 +1,53 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#individual_comment{
+    margin: 10px;
+    padding: 10px;
+    border-top:1px dotted;
+    background-color:white;
+    position: relative;
+    overflow:auto;
+}
+#like_count_comm{
+    width: 80px;
+}
+
+#up{
+    background-color: green;
+    padding-left: 10px;
+    height: 27px;
+}
+#down{
+    background-color: red;
+    padding-left: 10px;
+}
+#up_count{
+    background-color:green;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    height: 27px;
+
+}
+#down_count{
+
+    background-color: red;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+}
+#separator{
+    width: 5px;
+    background-color: white;
+    color: white;
+}
+
+#delete_edit_table{
+    float: right;
+    
+   
+
+}
+
+

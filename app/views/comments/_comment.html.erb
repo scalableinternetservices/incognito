@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div id=individual_comment>
 <div id="comment-<%= comment.id %>">
 <br />
 [<%= comment.created_at.strftime("%D,%l:%M %P") %>]
@@ -9,26 +12,51 @@
   
     
 
-<% if current_user && current_user==comment.user %>
-    <%= link_to "Delete", post_comment_path(@post, comment), method: :delete, remote: true, style: 'float-right' %>
-    <%= link_to "Edit", edit_post_comment_path(@post, comment,edit: 1)  %>
-<% end %>
+
 
 <% if current_user %>
-    <%= link_to like_post_comment_path(@post, comment), method: :put do %>
-    Upvote
-    <%= comment.get_upvotes.size %>
+    
+    <div id=like_count_comm> 
+    <table>
+    <tr>
+        <th id="up">
+            <%= link_to like_post_comment_path(@post, comment), method: :put do %>
+            <i class="fa fa-thumbs-up" style="font-size:24px;color:white;margin:2px"></i>
+        </th>
+        <th id="up_count">
+            <%= comment.get_upvotes.size %>
+        </th>
+        <th id='separator'>
+            |
+        </th>
     <% end %>
+            
+        <th id="down">
+            <%= link_to dislike_post_comment_path(@post, comment), method: :put do  %>
+            <i class="fa fa-thumbs-down" style="font-size:24px;color:white;margin:2px"></i>
+        </th>
+        <th id="down_count">
+            <%= comment.get_downvotes.size %>
+        </th>
+    </tr>
+    </table>
+    </div>
+    <% end %>
+    <% if current_user && current_user==comment.user %>
+    <div id="delete_edit_table">
+    <table>
+    <tr>
+        <th style="width:50px">
+            <%= link_to "Delete", post_comment_path(@post, comment), method: :delete, remote: true %>
+        </th>
 
-    <%= link_to dislike_post_comment_path(@post, comment), method: :put do  %>
-    Downvote
-    <%= comment.get_downvotes.size %>
-    <% end %>
+        <th style="width:50px">
+            <%= link_to "Edit", edit_post_comment_path(@post, comment,edit: 1)  %>
+        </th>
+    </tr>
+    </table>
+    </div>
 <% end %>
-
-
-
-
-
-
+<% end %>
+</div>
 </div>

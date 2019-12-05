@@ -1,8 +1,9 @@
 <% if params[:edit] == "1" && !(current_user && current_user.id==@post.user_id)%>
-    <h1> Unauthorized Access Is Not Permitted, Please Log in to Edit! </h1>
+    <div id='wrong_access'><h1> Unauthorized Access Is Not Permitted, Please Log in to Edit! </h1></div>
 <% else %>
+
 <%= simple_form_for(@post)  do |f| %>
-    <%= f.input :title %>
+    <div id="title_edit"><%= f.input :title %></div>
     <%= f.input :body %>
     <% if params[:edit] != "1" %>
         <%= f.label :public, class: "checkbox inline" do %>
@@ -11,9 +12,11 @@
             <div>(Otherwise only visible in University channel)</div>
           <% end %>
     <% end %>
-    <%= f.submit  %>
+
+   <%= button_tag "Submit", :type => 'submit',:style =>'color:white;background-color:darkgreen;border-radius:10px' %>
     <% if params[:edit] == "1" %>
-        <%= button_tag "Undo Changes", :type => 'reset' %>
+        <%= button_tag "Undo Changes", :type => 'reset',:style =>'color:white;background-color:rgb(53, 53, 219);border-radius:10px' %>
     <% end %> 
 <% end %>
+
  <% end %>

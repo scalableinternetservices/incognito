@@ -1,7 +1,10 @@
 
 <% if params[:edit] == "1" && !(current_user && current_user.id==@post.user_id)%>
-    <h1> Unauthorized Access Is Not Permitted, Please Log in to Edit! </h1>
+   <div class="wrong_access"> <h1> Unauthorized Access Is Not Permitted, Please Log in to Edit! </h1></div>
 <% else %>
-<h1> Edit Your Post </h1>
+
+<div id="edit_post">
+<h1 style="text-align:center"> Edit Your Post </h1>
 <%= render 'posts/editcreate' %>
 <% end %>
+<div id="edit_post">
