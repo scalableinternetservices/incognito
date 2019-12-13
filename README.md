@@ -2,10 +2,10 @@
 
 Name | Github | Picture
 ---- | ---- | ----
-William Tan	| willtan510 | <img src="https://avatars2.githubusercontent.com/u/16597248?s=460&v=4" data-canonical-src="https://avatars2.githubusercontent.com/u/16597248?s=460&v=4" width="75" height="75"/> 
-Raymond Lin	| raymondlin1 | <img src="https://avatars3.githubusercontent.com/u/22209475?s=460&v=4" data-canonical-src="https://avatars3.githubusercontent.com/u/22209475?s=460&v=4" width="75" height="75"/> </br>
-Amir Saad	| amirsaad2015 |
-Salekh Parkhati | SalYard |
+William Tan	| [willtan510](https://github.com/willtan510) | <img src="https://avatars2.githubusercontent.com/u/16597248?s=460&v=4" data-canonical-src="https://avatars2.githubusercontent.com/u/16597248?s=460&v=4" width="75" height="75"/> 
+Raymond Lin	| [raymondlin1](https://github.com/raymondlin1) | <img src="https://avatars3.githubusercontent.com/u/22209475?s=460&v=4" data-canonical-src="https://avatars3.githubusercontent.com/u/22209475?s=460&v=4" width="75" height="75"/> </br>
+Amir Saad	| [amirsaad2015](https://github.com/amirsaad2015) |
+Salekh Parkhati | [SalYard](https://github.com/SalYard) |
 
 <br>
 Section Time: 12pm - 1:50pm
